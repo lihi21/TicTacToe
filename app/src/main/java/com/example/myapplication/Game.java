@@ -16,12 +16,6 @@ public class Game
 
     }
 
-    public boolean getStatus(int num)
-    {
-        if(num==0)
-            return true;
-        return false;
-    }
 
     public boolean isOccupied(int row,int col)
     {
