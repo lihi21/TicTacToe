@@ -8,11 +8,19 @@ public class Game
     private int turnCounter=0;
 
 
+
     public boolean userMove(int row,int col)
     {
         turnCounter++;
         return false;
 
+    }
+
+    public boolean getStatus(int num)
+    {
+        if(num==0)
+            return true;
+        return false;
     }
 
     public boolean isOccupied(int row,int col)
