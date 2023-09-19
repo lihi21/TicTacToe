@@ -21,18 +21,17 @@ public class MainActivity extends AppCompatActivity implements IView{
     public void userClick(View view)
     {
         String id=getResources().getResourceEntryName(view.getId());
-        int row = id.charAt(1);
-        int col = id.charAt(2);
+        int row = id.charAt(1)-'0';
+        int col = id.charAt(2)-'0';
 
         presenter.userClick(row,col);
 
     }
 
     @Override
-    public void displayMessage(String message)
+    public void displayMessage(String m)
     {
-        if(message != null || message == "")
-
+        Toast.makeText(this,m ,Toast.LENGTH_SHORT).show();
 
     }
 

@@ -12,7 +12,8 @@ public class Game
     public boolean userMove(int row,int col)
     {
         turnCounter++;
-        return false;
+        if(turnCounter == 9) return false;
+        return  true;
 
     }
 
