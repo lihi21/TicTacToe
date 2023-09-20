@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements IView{
@@ -35,9 +36,28 @@ public class MainActivity extends AppCompatActivity implements IView{
 
     }
 
+
+    /***
+     *   updateBoard
+     * map row and col to specific VIEW (Button)
+     * mark the specific view with the symbol receoved
+     *
+     * @param row
+     * @param col
+     * @param symbol
+     */
     @Override
     public void updateBoard(int row, int col, char symbol)
     {
+
+        String strId = "b"+row + col;
+        int buttonId = getResources().getIdentifier(strId,"id",getPackageName());
+
+
+        Button button = (Button)findViewById(buttonId);
+
+        button.setText(""+symbol);
+
 
     }
 }

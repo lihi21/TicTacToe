@@ -17,6 +17,11 @@ public class Game
 
     }
 
+    public int getTurn()
+    {
+        return turnCounter%2;
+    }
+
 
     public boolean isOccupied(int row,int col)
     {
@@ -24,11 +29,11 @@ public class Game
         {
             if(this.turnCounter % 2 == 0)
             {
-                this.board[row][col] = 2;
+                this.board[row][col] = 1;
             }
             else
             {
-                this.board[row][col] = 1;
+                this.board[row][col] = -1;
             }
 
         }
@@ -39,44 +44,50 @@ public class Game
         return true;
     }
 
+
     public int checkWin(int row,int col)
     {
-        for (int i = 0; i < row; i++)
+        int count = 0;
+        for (int i = 0; i < 3; i++)
         {
-            int count = 0;
-            for (int j = 0; j < col; j++)
+
+            for (int j = 0; j < 3; j++)
             {
                   count += board[i][j];
             }
-            if(count == 3) return 1; if(count == -3) return -1;
         }
-        for (int i = 0; i < col; i++)
+        if(count == 3) return 1; if(count == -3) return -1;
+
+        count = 0;
+        for (int i = 0; i < 3; i++)
         {
-            int count = 0;
-            for (int j = 0; j < row; j++)
+
+            for (int j = 0; j < 3; j++)
             {
                 count += board[i][j];
             }
-            if(count == 3) return 1; if(count == -3) return -1;
         }
-        for (int i = 0; i < row; i++)
+        if(count == 3) return 1; if(count == -3) return -1;
+
+        count = 0;
+        for (int i = 0; i < 3; i++)
         {
-            int count = 0;
-            for (int j = 0; j < row; j++)
-            {
-                count += board[i][i];
-            }
-            if(count == 3) return 1; if(count == -3) return -1;
+
+            count += board[i][i];
+
         }
-        for (int i = col; i < 0; i++)
+        if(count == 3) return 1; if(count == -3) return -1;
+
+        count = 0;
+        for (int i = 0; i < 3; i++)
         {
-            int count = 0;
-            for (int j = 0; j < col; j++)
-            {
-                count += board[i][j];
-            }
-            if(count == 3) return 1; if(count == -3) return -1;
+
+
+                count += board[i][board.length-i-1];
+
         }
+        if(count == 3) return 1; if(count == -3) return -1;
+
         return  0;
 
     }
